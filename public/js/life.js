@@ -72,7 +72,7 @@ function tick() {
     updateGrid();
     printGrid();
     tick();
-  }, 20);
+  }, 200);
 }
 
 tick();
