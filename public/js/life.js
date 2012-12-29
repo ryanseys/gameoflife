@@ -63,13 +63,7 @@ function printGrid() {
   }
 }
 
-var DIM = 30;
-var upd_grid;
-var grid = getNewArray();
-var timer;
-
 function tick() {
-
   timer = setTimeout(function() {
     updateGrid();
     printGrid();
@@ -77,12 +71,20 @@ function tick() {
   }, 200);
 }
 
-tick();
-
-var stopTicking = function() {
+var toggleTicking = function() {
   if (timer) {
-      clearTimeout(timer);
-      timer = 0;
+    clearTimeout(timer);
+    timer = 0;
+    document.getElementById('toggle').value = "Play";
+  }
+  else {
+    tick();
+    document.getElementById('toggle').value = "Pause";
   }
 }
 
+var DIM = 30;
+var upd_grid;
+var grid = getNewArray();
+var timer;
+tick();
