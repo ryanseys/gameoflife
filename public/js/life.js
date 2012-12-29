@@ -66,9 +66,11 @@ function printGrid() {
 var DIM = 30;
 var upd_grid;
 var grid = getNewArray();
+var timer;
 
 function tick() {
-    setTimeout(function() {
+
+  timer = setTimeout(function() {
     updateGrid();
     printGrid();
     tick();
@@ -76,3 +78,11 @@ function tick() {
 }
 
 tick();
+
+var stopTicking = function() {
+  if (timer) {
+      clearTimeout(timer);
+      timer = 0;
+  }
+}
+
