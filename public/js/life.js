@@ -57,8 +57,17 @@ function updateGrid() {
 function printGrid() {
   for(var i = 0; i < DIM; i++) {
     for(var j = 0; j < DIM; j++) {
-      if(grid[i][j] == 1) document.getElementById(i+','+j).style.backgroundColor = "#000";//innerHTML = "<div style=\"height:100%; width:100%; background-color:#000000; position:relative;\"></div>";
-      else document.getElementById(i+','+j).style.backgroundColor = "#FFF";
+      var style = document.getElementById(i+','+j).style;
+      if(grid[i][j] == 1) {
+        style.backgroundColor = "#000";
+        style.borderStyle="solid";
+        style.borderColor="#000";
+      }
+      else {
+        style.backgroundColor = "#FFF";
+        style.borderStyle="solid";
+        style.borderColor="#FFF";
+      }
     }
   }
 }
@@ -96,9 +105,19 @@ function clickTile(i, j) {
 }
 
 function hoverTile(i, j) {
-  if(live == true) document.getElementById(i + "," + j).style.backgroundColor = "#000";
-  else document.getElementById(i + "," + j).style.backgroundColor = "#FFF";
-  setTile(i, j);
+  var element = document.getElementById(i + "," + j);
+  if(mousedown  == true) {
+    if(live == true) element.style.backgroundColor = "#000";
+    else element.style.backgroundColor = "#FFF";
+    setTile(i, j);
+  }
+  element.style.borderStyle="solid";
+  element.style.borderColor="grey";
+}
+
+function unhoverTile(i, j) {
+  var element = document.getElementById(i + "," + j);
+  element.style.borderStyle="none";
 }
 
 function toggleLive() {
@@ -107,9 +126,18 @@ function toggleLive() {
   else document.getElementById('togglelive').value = "Dead";
 }
 
+window.onmouseup = function() {
+  mousedown = false;
+}
+
+window.onmousedown = function() {
+  mousedown = true;
+}
+
 var DIM = 30;
 var live = true;
 var upd_grid;
 var grid = getNewArray();
 var timer;
+var mousedown = false;
 tick();
