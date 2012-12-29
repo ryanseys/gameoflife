@@ -63,6 +63,13 @@ function printGrid() {
   }
 }
 
+function setTile(i, j) {
+  if(live == true) {
+    grid[i][j] = 1;
+  }
+  else grid[i][j] = 0;
+}
+
 function tick() {
   timer = setTimeout(function() {
     updateGrid();
@@ -83,7 +90,25 @@ function toggleTicking() {
   }
 }
 
+function clickTile(i, j) {
+  document.getElementById(i + "," + j).style.backgroundColor = "#000";
+  turnOnTile(i, j);
+}
+
+function hoverTile(i, j) {
+  if(live == true) document.getElementById(i + "," + j).style.backgroundColor = "#000";
+  else document.getElementById(i + "," + j).style.backgroundColor = "#FFF";
+  setTile(i, j);
+}
+
+function toggleLive() {
+  live = !live;
+  if(live) document.getElementById('togglelive').value = "Alive";
+  else document.getElementById('togglelive').value = "Dead";
+}
+
 var DIM = 30;
+var live = true;
 var upd_grid;
 var grid = getNewArray();
 var timer;

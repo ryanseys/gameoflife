@@ -7,8 +7,9 @@ block content
     - for (var i = 0; i < 30; ++i) {
       tr
         - for (var j = 0; j < 30; ++j) {
-          td(id= i+','+j)
+          td(id= i+','+j, onclick="clickTile(" + i + "," + j + ")", onmouseover="hoverTile(" + i + "," + j + ")")
         - }
     - }
   input(id="toggle", type="submit", value="Pause", onclick="toggleTicking()")
+  input(id="togglelive", type="submit", value="Alive", onclick="toggleLive()")
   script(src='/js/life.js')
