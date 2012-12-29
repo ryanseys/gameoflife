@@ -71,7 +71,7 @@ function tick() {
   }, 200);
 }
 
-var toggleTicking = function() {
+function toggleTicking() {
   if (timer) {
     clearTimeout(timer);
     timer = 0;
