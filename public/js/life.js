@@ -57,17 +57,9 @@ function updateGrid() {
 function printGrid() {
   for(var i = 0; i < DIM; i++) {
     for(var j = 0; j < DIM; j++) {
-      var style = document.getElementById(i+','+j).style;
-      if(grid[i][j] == 1) {
-        style.backgroundColor = "#000";
-        style.borderStyle="solid";
-        style.borderColor="#000";
-      }
-      else {
-        style.backgroundColor = "#FFF";
-        style.borderStyle="solid";
-        style.borderColor="#FFF";
-      }
+      var element = document.getElementById(i+','+j);
+      if(grid[i][j] == 1) element.setAttribute("class", "alive");
+      else element.setAttribute("class", "dead");
     }
   }
 }
@@ -100,24 +92,17 @@ function toggleTicking() {
 }
 
 function clickTile(i, j) {
-  document.getElementById(i + "," + j).style.backgroundColor = "#000";
-  turnOnTile(i, j);
+  document.getElementById(i + "," + j).setAttribute("class", "alive");
+  setTile(i, j);
 }
 
 function hoverTile(i, j) {
   var element = document.getElementById(i + "," + j);
   if(mousedown  == true) {
-    if(live == true) element.style.backgroundColor = "#000";
-    else element.style.backgroundColor = "#FFF";
+    if(live == true) element.setAttribute("class", "alive");
+    else element.setAttribute("class", "dead");
     setTile(i, j);
   }
-  element.style.borderStyle="solid";
-  element.style.borderColor="grey";
-}
-
-function unhoverTile(i, j) {
-  var element = document.getElementById(i + "," + j);
-  element.style.borderStyle="none";
 }
 
 function toggleLive() {
