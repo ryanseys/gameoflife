@@ -107,8 +107,8 @@ function hoverTile(i, j) {
 
 function toggleLive() {
   live = !live;
-  if(live) document.getElementById('togglelive').value = "Alive";
-  else document.getElementById('togglelive').value = "Dead";
+  if(live) document.getElementById('togglelive').value = "Kill";
+  else document.getElementById('togglelive').value = "Create";
 }
 
 window.onmouseup = function() {
