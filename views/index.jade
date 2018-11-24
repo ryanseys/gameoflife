@@ -13,3 +13,35 @@ block content
   input(id="toggle", type="submit", value="Pause", onclick="toggleTicking()")
   input(id="togglelive", type="submit", value="Kill", onclick="toggleLive()")
   script(src='/js/life.js')
+  style.
+    body {
+      padding: 50px;
+      font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    }
+
+    a {
+      color: #00B7FF;
+    }
+
+    td {
+      padding: 5px;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      /* this will work for QtWebKit in future */
+      -webkit-user-drag: none;
+    }
+
+    td.alive {
+      border: solid black;
+      background-color: black;
+    }
+
+    td.dead {
+      border: solid white;
+      background-color: white;
+    }
+
+    td:hover {
+      border: solid grey;
+    }
+
